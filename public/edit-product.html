@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">E-commerce App</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Edit Product</h2>
+        <div id="loading-message" class="alert alert-info">Loading product details...</div>
+        <div id="error-message" class="alert alert-danger d-none"></div>
+        
+        <form id="edit-product-form" class="d-none">
+            <input type="hidden" id="product-id">
+            
+            <div class="mb-3">
+                <label for="product-name" class="form-label">Product Name</label>
+                <input type="text" class="form-control" id="product-name" required>
+            </div>
+            <div class="mb-3">
+                <label for="product-description" class="form-label">Description</label>
+                <textarea class="form-control" id="product-description" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="product-price" class="form-label">Price</label>
+                <input type="number" step="0.01" class="form-control" id="product-price" required>
+            </div>
+            <div class="mb-3">
+                <label for="product-category" class="form-label">Category</label>
+                <select class="form-select" id="product-category" required>
+                    <option value="">Select a category...</option>
+                    <option value="Vinyls">Vinyls</option>
+                    <option value="Antique Furniture">Antique Furniture</option>
+                    <option value="GPS Sport Watches">GPS Sport Watches</option>
+                    <option value="Running Shoes">Running Shoes</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="product-image" class="form-label">Image URL</label>
+                <input type="url" class="form-control" id="product-image">
+                 <small class="form-text text-muted">Enter a single image URL for now.</small>
+            </div>
+            
+            <div class="mb-3">
+                <label for="product-seller" class="form-label">Seller Name</label>
+                <input type="text" class="form-control" id="product-seller">
+            </div>
+            
+            <hr>
+            <h5>Optional Fields</h5>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="product-material" class="form-label">Material</label>
+                    <input type="text" class="form-control" id="product-material">
+                </div>
+                <div class="col-md-6">
+                    <label for="product-size" class="form-label">Size</label>
+                    <input type="text" class="form-control" id="product-size">
+                </div>
+            </div>
+            <div class="row mb-3">
+                 <div class="col-md-6">
+                    <label for="product-age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="product-age" min="0">
+                </div>
+                 <div class="col-md-6">
+                    <label for="product-battery" class="form-label">Battery Life (hours)</label>
+                    <input type="number" class="form-control" id="product-battery" min="0">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="/admin.html" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/edit-product.js"></script>
+</body>
+</html> 

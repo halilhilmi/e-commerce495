@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">E-Commerce Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                </ul>
+                <div class="d-flex">
+                    <div id="auth-buttons">
+                        <button class="btn btn-outline-light me-2" id="login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                        <button class="btn btn-outline-light" id="register-btn" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                    </div>
+                    <div id="user-info" class="d-none">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <span id="username">User</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="admin.html" id="admin-panel-link" style="display: none;">Admin Panel</a></li>
+                                <li><a class="dropdown-item" href="#" id="logout-btn">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Filters</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Categories</h6>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" value="All" id="all-category" checked>
+                            <label class="form-check-label" for="all-category">
+                                All Categories
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" value="Vinyls" id="vinyls-category">
+                            <label class="form-check-label" for="vinyls-category">
+                                Vinyls
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" value="Antique Furniture" id="furniture-category">
+                            <label class="form-check-label" for="furniture-category">
+                                Antique Furniture
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" value="GPS Sport Watches" id="watches-category">
+                            <label class="form-check-label" for="watches-category">
+                                GPS Sport Watches
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input category-filter" type="checkbox" value="Running Shoes" id="shoes-category">
+                            <label class="form-check-label" for="shoes-category">
+                                Running Shoes
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h2>Products</h2>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="search-input" placeholder="Search products...">
+                            <button class="btn btn-primary" id="search-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="products-container" class="row">
+                    <div class="col-12 text-center py-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <div class="alert alert-danger d-none" id="login-error"></div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="mb-3">
+                            <label for="register-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="register-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-surname" class="form-label">Surname</label>
+                            <input type="text" class="form-control" id="register-surname" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="register-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="register-phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="register-password" required>
+                        </div>
+                        <div class="alert alert-danger d-none" id="register-error"></div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="product-title">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="product-image" src="" alt="Product Image" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <h5 id="product-name"></h5>
+                            <p id="product-description"></p>
+                            <h6>Price: $<span id="product-price"></span></h6>
+                            <p>Category: <span id="product-category"></span></p>
+                            <p id="product-seller-container">Seller: <span id="product-seller">Unknown</span></p>
+                            <p id="product-material-container" style="display: none;">Material: <span id="product-material"></span></p>
+                            <p id="product-size-container" style="display: none;">Size: <span id="product-size"></span></p>
+                            <p id="product-age-container" style="display: none;">Age: <span id="product-age"></span></p>
+                            <p id="product-battery-container" style="display: none;">Battery Life: <span id="product-battery"></span> hours</p>
+                            <div class="mb-3">
+                                <span>Rating: </span>
+                                <span id="product-rating"></span> (<span id="product-reviews-count">0</span> reviews)
+                            </div>
+                            <div id="rating-section" class="d-none">
+                                <h6>Rate this product:</h6>
+                                <div class="rating-control mb-3">
+                                    <div id="star-rating-input" class="star-rating-input">
+                                        <span class="star" data-value="1">&#9733;</span>
+                                        <span class="star" data-value="2">&#9733;</span>
+                                        <span class="star" data-value="3">&#9733;</span>
+                                        <span class="star" data-value="4">&#9733;</span>
+                                        <span class="star" data-value="5">&#9733;</span>
+                                        <span class="star" data-value="6">&#9733;</span>
+                                        <span class="star" data-value="7">&#9733;</span>
+                                        <span class="star" data-value="8">&#9733;</span>
+                                        <span class="star" data-value="9">&#9733;</span>
+                                        <span class="star" data-value="10">&#9733;</span>
+                                    </div>
+                                    <input type="hidden" id="rating-value" value="0">
+                                </div>
+                                <h6>Write a review:</h6>
+                                <div class="review-control">
+                                    <textarea id="review-text" class="form-control mb-2" rows="3"></textarea>
+                                    <button id="submit-review" class="btn btn-sm btn-primary">Submit Review</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h6>Reviews:</h6>
+                        <div id="reviews-container">
+                            <p id="no-reviews-message">No reviews yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
