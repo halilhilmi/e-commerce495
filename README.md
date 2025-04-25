@@ -1,14 +1,10 @@
-# Modern E-Commerce Platform
+# E-Commerce Web Application
 
 A full-featured e-commerce web application with a REST API backend built with Node.js, Express, TypeScript, and MongoDB, and a front-end built with HTML, CSS, and JavaScript.
 
 ## Deployment
 
-The application is deployed on Vercel and accessible at: [e-commerce-platform.vercel.app](https://e-commerce495.vercel.app)
-
-## GitHub Repository
-
-This project is available on GitHub: [https://github.com/halilhilmi/e-commerce495](https://github.com/halilhilmi/e-commerce495)
+The application is deployed on Vercel and accessible at: https://e-commerce495.vercel.app
 
 ## User Credentials
 
